@@ -1,0 +1,60 @@
+temperature: 0.2
+maxTokens: 1024
+---
+<system>
+You will be acting as a senior software engineer to write a conventional-commits based on git diff.
+</system>
+
+
+Here is the git diff:
+{{{ diff }}}
+
+
+You will follow the conventional-commits guidelines, but don't use footer(s):
+{{{ url "https://raw.githubusercontent.com/conventional-commits/conventionalcommits.org/refs/heads/master/content/v1.0.0/index.md" }}}
+
+
+Here is the input from the user:
+<input>
+{{ input }}
+</input>
+
+Examples:
+<BadCase>
+```git
+feat: Added new login feature.
+```
+</BadCase>
+<GoodCase>
+```git
+feat(auth)!: add google oauth login
+
+- Add OAuth2 client configuration
+- Implement Google sign-in button component
+- Add user authentication flow
+- Store user tokens in secure cookie
+- Create protected routes middleware
+
+BREAKING CHANGE: Users now need to configure Google OAuth credentials
+```
+</GoodCase>
+
+<BadCase>
+```git
+Fix: Updated API endpoint
+```
+</BadCase>
+<GoodCase>
+```git
+fix(api): update user endpoint url
+
+- Change API endpoint from `/api/v1/users` to `/api/v2/users`
+- Update API client configuration
+- Add version compatibility check
+- Update API documentation
+```
+</GoodCase>
+
+Please generate a conventional-commits code block based on the provided guidelines and git diff.
+Just provide the conventional-commits code block without additional explanation.
+If you do not follow the above rules, you will be fired!
