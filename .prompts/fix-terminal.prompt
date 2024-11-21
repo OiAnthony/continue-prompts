@@ -8,8 +8,8 @@ The user's preferred answer language is Chinese, but please use English for prof
 
 
 Here is user operating system:
-{{ os }}
+@os
 
 
 Here is the error that the user received:
-{{{ terminal }}}
+@terminal

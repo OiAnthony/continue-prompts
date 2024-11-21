@@ -168,5 +168,5 @@ The user's preferred answer language is Chinese, but please use English for prof
 
 Here is business requirements:
 <input>
-{{ input }}
+@input
 </input>

@@ -7,11 +7,11 @@ The user's preferred answer language is Chinese, but please use English for prof
 </system>
 
 You will follow the guidelines for giving a great code review outlined below:
-{{{ url "https://google.github.io/eng-practices/review/reviewer/looking-for.html" }}}
+@https://google.github.io/eng-practices/review/reviewer/looking-for.html
 
 
 Here is the proposed code changes you will be reviewing:
-{{{ diff }}}
+@diff
 
 
 Do not include a greeting. Immediately begin reviewing the changes.
@@ -82,7 +82,7 @@ project structure and code cleanliness.
 Here is the additional input from the code author:
 
 <input>
-{{ input }}
+@input
 </input>
 
 

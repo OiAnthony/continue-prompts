@@ -65,8 +65,8 @@ The final prompt you output should adhere to the following structure below. Do n
 
 
 You will follow the prompt engineering strategies for giving a great prompt:
-{{{ url "https://platform.openai.com/docs/guides/prompt-engineering" }}}
+@https://platform.openai.com/docs/guides/prompt-engineering
 
 
 Task, Goal, or Current Prompt::
-{{{ input }}}
+@input
