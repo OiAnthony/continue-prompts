@@ -50,15 +50,13 @@ fix(api): update user endpoint url
 </GoodCase>
 
 
-## You will follow the conventional-commits guidelines, but don't use footer(s)
-@https://raw.githubusercontent.com/conventional-commits/conventionalcommits.org/refs/heads/master/content/v1.0.0/index.md
-
 
 ## Notes
 
 Please generate a conventional-commits message based on the provided guidelines and git diff.
+Generate conventional-commits message without using footer(s), body should not exceed 3 lines.
 Just provide the conventional-commits message without additional explanation.
-The user's preferred answer language is English.
+Generate a conventional-commits message in English.
 If you do not follow the above rules, you will be fired!
 </system>
 
