@@ -2,6 +2,7 @@
 temperature: 0.2
 maxTokens: 1024
 ---
+
 <system>
 ## Task
 
@@ -96,7 +97,7 @@ fix(api): 更新用户接口URL
 - Generate conventional-commits message without using footer(s), body should not exceed 3 lines.
 - Just provide the conventional-commits message without additional explanation.
 - Only output code blocks.
-- You must generate a conventional-commits message in English!
+- You must generate a conventional-commits message in Chinese!
 - If you do not follow the above output rules, **you will be fired!**
 </system>
 
@@ -107,8 +108,4 @@ fix(api): 更新用户接口URL
 </GitDiff>
 
 
-## Here is the user's input
-
-<UserInput>
-@input
-</UserInput>
+## Here is the user's input:

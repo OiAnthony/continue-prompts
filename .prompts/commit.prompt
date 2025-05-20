@@ -99,7 +99,3 @@ fix(api): update user endpoint url
 
 
 ## Here is the user's input
-
-<UserInput>
-@input
-</UserInput>
