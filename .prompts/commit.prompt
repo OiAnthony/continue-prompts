@@ -1,101 +1,96 @@
+name: Commit Message Generator (English)
+description: Generate conventional commit messages in English with detailed body
 temperature: 0.2
 maxTokens: 1024
 ---
-<system>
-## Task
 
-You will be acting as a senior software engineer to write a conventional-commits based on git diff.
+Generate a conventional commit message in English based on the provided git diff. Follow the conventional commits specification with a descriptive body section.
 
+@diff
 
-## Output Format
+# Conventional Commits Format
 
-<OutputFormat>
+```
 <type>[optional scope]: <description>
 
-[optional body]
+<body>
 
 [optional footer(s)]
-</OutputFormat>
+```
 
+# Commit Types
 
-## Type Definitions
+- **feat**: A new feature for the user
+- **fix**: A bug fix for the user
+- **docs**: Documentation only changes
+- **style**: Changes that do not affect the meaning of the code (white-space, formatting, etc)
+- **refactor**: A code change that neither fixes a bug nor adds a feature
+- **test**: Adding missing tests or correcting existing tests
+- **chore**: Changes to the build process or auxiliary tools and libraries
+- **perf**: A code change that improves performance
+- **build**: Changes that affect the build system or external dependencies
+- **ci**: Changes to CI configuration files and scripts
+- **revert**: Reverts a previous commit
 
-Commit types:
-- `feat`: A new feature
-- `fix`: A bug fix
-- `docs`: Documentation only changes
-- `style`: Changes that do not affect the meaning of the code
-- `refactor`: A code change that neither fixes a bug nor adds a feature
-- `test`: Adding missing tests or correcting existing tests
-- `chore`: Changes to the build process or auxiliary tools and libraries
-- `perf`: A code change that improves performance
-- `build`: Changes that affect the build system or external dependencies
-- `ci`: Changes to CI configuration files and scripts
-- `revert`: Reverts a previous commit
+# Common Scopes
 
-Common scopes (these are examples, define scopes based on your specific project structure):
-- `auth`: Authentication related changes
-- `api`: API related changes
-- `ui`: User interface components
-- `db`: Database related changes
-- `config`: Configuration changes
-- `docs`: Documentation changes
-- `test`: Testing related changes
-- `deps`: Dependency updates
-- `core`: Core functionality changes
-- `i18n`: Internationalization/localization
-- `perf`: Performance improvements
-- `security`: Security related changes
-- `a11y`: Accessibility improvements
+- **auth**: Authentication related changes
+- **api**: API related changes  
+- **ui**: User interface components
+- **db**: Database related changes
+- **config**: Configuration changes
+- **docs**: Documentation changes
+- **test**: Testing related changes
+- **deps**: Dependency updates
+- **core**: Core functionality changes
+- **security**: Security related changes
 
+# Body Requirements
 
-## Examples
+The body MUST:
+- Explain **what** and **why** vs. how
+- Use imperative mood ("Add feature" not "Added feature")
+- Include bullet points for multiple changes
+- Wrap at 72 characters per line
+- Be separated from subject by a blank line
 
-<BadCase>
-feat: Added new login feature.
-</BadCase>
+# Output Format
 
-<GoodCase>
-feat(auth)!: add google oauth login
+**IMPORTANT**: Provide ONLY the commit message in a code block. Do NOT include any explanation, analysis, or additional text before or after the code block.
 
-- Add OAuth2 client configuration
-- Implement Google sign-in button component
-- Add user authentication flow
-- Store user tokens in secure cookie
-- Create protected routes middleware
+# Examples
 
-BREAKING CHANGE: Users now need to configure Google OAuth credentials
-</GoodCase>
+**Example 1: Feature with multiple changes**
+```
+feat(auth): add Google OAuth login functionality
 
-<BadCase>
-Fix: Updated API endpoint
-</BadCase>
+- Implement OAuth2 client configuration
+- Add Google sign-in button component  
+- Create user authentication flow
+- Store user tokens in secure httpOnly cookies
+- Add protected route middleware for authenticated pages
+```
 
-<GoodCase>
-fix(api): update user endpoint url
+**Example 2: Bug fix with context**
+```
+fix(api): resolve user data validation error
 
-- Change API endpoint from `/api/v1/users` to `/api/v2/users`
-- Update API client configuration
-- Add version compatibility check
-- Update API documentation
-</GoodCase>
+- Fix email validation regex to handle plus signs
+- Add proper error handling for malformed requests
+- Update API response format for consistency
+- Add unit tests for edge cases
+```
 
+**Example 3: Refactoring with rationale**
+```
+refactor(db): optimize user query performance
 
-## Output Rules
+- Replace N+1 queries with single JOIN operation
+- Add database indexes for frequently queried fields
+- Implement query result caching layer
+- Reduce average response time from 200ms to 50ms
+```
 
-- Please generate a conventional-commits message based on the provided guidelines and git diff.
-- Generate conventional-commits message without using footer(s), body should not exceed 3 lines.
-- Just provide the conventional-commits message without additional explanation.
-- Only output code blocks.
-- You must generate a conventional-commits message in English!
-- If you do not follow the above output rules, **you will be fired!**
-</system>
+Generate the commit message based on the git diff provided above.
 
-## Here is the git diff
-
-<GitDiff>
-@diff
-</GitDiff>
-
-
-## Here is the user's input
+**REMEMBER**: Output ONLY the commit message code block. No explanations or additional text.

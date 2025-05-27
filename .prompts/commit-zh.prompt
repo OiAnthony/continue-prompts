@@ -1,111 +1,96 @@
----
+name: Commit Message Generator (Chinese)
+description: Generate conventional commit messages in Chinese with detailed body
 temperature: 0.2
 maxTokens: 1024
 ---
 
-<system>
-## Task
+基于提供的 git diff 生成中文的 conventional commit 消息。遵循 conventional commits 规范，并包含详细的 body 部分。
 
-You will be acting as a senior software engineer to write a conventional-commits based on git diff.
+@diff
 
+# Conventional Commits 格式
 
-## Output Format
-
-<OutputFormat>
+```
 <type>[optional scope]: <description>
 
-[optional body]
+<body>
 
 [optional footer(s)]
-</OutputFormat>
-
-
-## Type Definitions
-
-Commit types:
-- `feat`: A new feature
-- `fix`: A bug fix
-- `docs`: Documentation only changes
-- `style`: Changes that do not affect the meaning of the code
-- `refactor`: A code change that neither fixes a bug nor adds a feature
-- `test`: Adding missing tests or correcting existing tests
-- `chore`: Changes to the build process or auxiliary tools and libraries
-- `perf`: A code change that improves performance
-- `build`: Changes that affect the build system or external dependencies
-- `ci`: Changes to CI configuration files and scripts
-- `revert`: Reverts a previous commit
-
-Common scopes (these are examples, define scopes based on your specific project structure):
-- `auth`: Authentication related changes
-- `api`: API related changes
-- `ui`: User interface components
-- `db`: Database related changes
-- `config`: Configuration changes
-- `docs`: Documentation changes
-- `test`: Testing related changes
-- `deps`: Dependency updates
-- `core`: Core functionality changes
-- `i18n`: Internationalization/localization
-- `perf`: Performance improvements
-- `security`: Security related changes
-- `a11y`: Accessibility improvements
-
-
-## Examples
-
-<BadCase>
-```git
-feat: 添加了新的登录功能
 ```
-</BadCase>
 
-<GoodCase>
-```git
-feat(auth)!: 添加Google OAuth登录功能
+# Commit 类型
 
-- 添加 OAuth2 客户端配置
-- 实现 Google 登录按钮组件
-- 添加用户认证流程
-- 在安全 cookie 中存储用户令牌
-- 创建受保护路由中间件
+- **feat**: 新功能
+- **fix**: 修复 bug
+- **docs**: 仅文档更改
+- **style**: 不影响代码含义的更改（空格、格式化等）
+- **refactor**: 既不修复 bug 也不添加功能的代码更改
+- **test**: 添加缺失的测试或修正现有测试
+- **chore**: 构建过程或辅助工具和库的更改
+- **perf**: 提高性能的代码更改
+- **build**: 影响构建系统或外部依赖的更改
+- **ci**: CI 配置文件和脚本的更改
+- **revert**: 回滚之前的提交
 
-BREAKING CHANGE: 用户现在需要配置 Google OAuth 凭据
+# 常用作用域
+
+- **auth**: 认证相关更改
+- **api**: API 相关更改
+- **ui**: 用户界面组件
+- **db**: 数据库相关更改
+- **config**: 配置更改
+- **docs**: 文档更改
+- **test**: 测试相关更改
+- **deps**: 依赖更新
+- **core**: 核心功能更改
+- **security**: 安全相关更改
+
+# Body 要求
+
+Body 必须：
+- 解释**做了什么**和**为什么**，而不是如何做
+- 使用祈使语气（"添加功能"而不是"添加了功能"）
+- 对于多个更改使用项目符号
+- 每行不超过 72 个字符
+- 与主题行之间用空行分隔
+
+# 输出格式
+
+**重要**: 仅输出 commit 消息代码块。不要包含任何解释、分析或代码块前后的额外文本。
+
+# 示例
+
+**示例 1: 包含多个更改的新功能**
 ```
-</GoodCase>
+feat(auth): 添加 Google OAuth 登录功能
 
-<BadCase>
-```git
-Fix: 更新接口
+- 实现 OAuth2 客户端配置
+- 添加 Google 登录按钮组件
+- 创建用户认证流程
+- 在安全 httpOnly cookie 中存储用户令牌
+- 为认证页面添加受保护路由中间件
 ```
-</BadCase>
 
-<GoodCase>
-```git
-fix(api): 更新用户接口URL
-
-- 将API端点从“/ API /v1/users”更改为“/ API /v2/users”
-- 更新API客户端配置
-- 增加版本兼容性检查
-- 更新API文档
+**示例 2: 带上下文的 bug 修复**
 ```
-</GoodCase>
+fix(api): 解决用户数据验证错误
 
+- 修复邮箱验证正则表达式以处理加号
+- 为格式错误的请求添加适当的错误处理
+- 更新 API 响应格式以保持一致性
+- 为边缘情况添加单元测试
+```
 
-## Output Rules
+**示例 3: 带理由的重构**
+```
+refactor(db): 优化用户查询性能
 
-- Please generate a conventional-commits message based on the provided guidelines and git diff.
-- Generate conventional-commits message without using footer(s), body should not exceed 3 lines.
-- Just provide the conventional-commits message without additional explanation.
-- Only output code blocks.
-- You must generate a conventional-commits message in Chinese!
-- If you do not follow the above output rules, **you will be fired!**
-</system>
+- 用单个 JOIN 操作替换 N+1 查询
+- 为频繁查询的字段添加数据库索引
+- 实现查询结果缓存层
+- 将平均响应时间从 200ms 减少到 50ms
+```
 
-## Here is the git diff
+根据上面提供的 git diff 生成 commit 消息。
 
-<GitDiff>
-@diff
-</GitDiff>
-
-
-## Here is the user's input:
+**记住**: 仅输出 commit 消息代码块。不要解释或添加额外文本。
